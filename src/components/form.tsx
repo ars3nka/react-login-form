@@ -1,6 +1,15 @@
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+function showHidePassword(id: string) {
+  const passInput = document.getElementById(id) as HTMLInputElement;
+  if (passInput.type === 'password') {
+    passInput.type = 'text';
+  } else if (passInput.type === 'text') {
+    passInput.type = 'password';
+  }
+}
+
 export const Form = () => {
   return (
     <div className="login-form">
@@ -34,12 +43,3 @@ export const Form = () => {
     </div>
   );
 };
-
-function showHidePassword(id: string) {
-  const passInput = document.getElementById(id) as HTMLInputElement;
-  if (passInput.type === 'password') {
-    passInput.type = 'text';
-  } else if (passInput.type === 'text') {
-    passInput.type = 'password';
-  }
-}
