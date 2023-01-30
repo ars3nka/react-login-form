@@ -1,0 +1,14 @@
+.signup-form {
+  background-color: #093545;
+}
+
+.signup-form h1,
+.signup-form p,
+.signup-form form button,
+.signup-form form .change_page_button {
+  color: #ffffff;
+}
+
+.signup-form form input {
+  background-color: #20df7f !important;
+}
