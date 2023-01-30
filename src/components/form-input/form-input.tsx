@@ -1,4 +1,4 @@
-interface inputProps {
+interface InputProps {
   type: string;
   id: string;
   placeholder?: string;
@@ -12,7 +12,7 @@ export const FormInput = ({
   placeholder,
   onChange,
   value,
-}: inputProps) => {
+}: InputProps) => {
   return (
     <input
       type={type}
