@@ -1,0 +1,42 @@
+.signup-form form input:not(:last-child) {
+  margin-bottom: 0px;
+}
+
+.signup-form-formik input[type='email'] {
+  margin-bottom: 0px !important;
+}
+
+.signup-form-formik .form-group:not(:first-child),
+.signup-form-formik .btn {
+  margin-top: 10px !important;
+}
+
+.invalid-feedback {
+  margin-top: 5px;
+  color: red;
+  font-size: 12px;
+}
+
+.form-check-label {
+  color: #fff;
+}
+
+#acceptTerms {
+  opacity: 0;
+  display: none;
+}
+
+#acceptTerms ~ label::before {
+  display: inline-block;
+  content: '   ';
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: #224957;
+  margin-right: 7px;
+  margin-bottom: -5.5px;
+}
+
+#acceptTerms:checked ~ label::before {
+  background-color: #20df7f;
+}
