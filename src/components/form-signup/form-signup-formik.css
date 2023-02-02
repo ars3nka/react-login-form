@@ -12,6 +12,7 @@
 }
 
 .invalid-feedback {
+  width: 300px;
   margin-top: 5px;
   color: red;
   font-size: 12px;
