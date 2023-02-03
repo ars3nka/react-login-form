@@ -29,6 +29,12 @@
   margin-bottom: 36px;
 }
 
+.login-form .error {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: red;
+}
+
 .login-form form input[type='password'],
 .login-form form input[type='text'],
 .login-form form input[type='email'] {
@@ -54,7 +60,7 @@
 }
 
 .login-form form input[type='email'] {
-  margin-bottom: 32px;
+  margin-bottom: 25px;
 }
 
 .signup-form form input:not(:last-child) {

@@ -2,6 +2,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FormButton } from '../form-button/form-button';
 import { FormInput } from '../form-input/form-input';
 
 import '../form-login/form-login.css';
@@ -114,11 +115,13 @@ export const FormSignUp = () => {
           />
         </div>
 
-        <button type="submit">Sign Up</button>
+        <FormButton type="submit" text="Sign Up" />
         <NavLink to="/">
-          <button type="submit" className="change_page_button">
-            Already registered? Login!
-          </button>
+          <FormButton
+            type="submit"
+            className="change_page_button"
+            text="Already registered? Login!"
+          />
         </NavLink>
       </form>
     </div>

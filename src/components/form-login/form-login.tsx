@@ -1,10 +1,15 @@
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FormButton } from '../form-button/form-button';
 import { FormInput } from '../form-input/form-input';
 
 import './form-login.css';
+
+// eslint-disable-next-line no-useless-escape
+const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
 export const FormLogin = () => {
   const handleConfirm = () => {
@@ -15,7 +20,11 @@ export const FormLogin = () => {
   };
 
   const [email, setEmail] = useState<string>('');
+  const [emailError, setEmailError] = useState<string>('');
+
   const [password, setPassword] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
+
   const [isRememberme, setIsRememberme] = useState<boolean>(false);
   const [isShowPassword, setShowPassword] = useState<boolean>(true);
 
@@ -38,6 +47,29 @@ export const FormLogin = () => {
     console.log(isShowPassword);
   };
 
+  useEffect(() => {
+    const emailElement: HTMLElement | null = document.getElementById('email');
+    if (!regexEmail.test(email) && email.length !== 0) {
+      setEmailError('Please enter correct email');
+      {
+        emailElement ? (emailElement.style.marginBottom = '0px') : null;
+      }
+    } else {
+      setEmailError('');
+      {
+        emailElement ? (emailElement.style.marginBottom = '25px') : null;
+      }
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (!regexPassword.test(password) && password.length !== 0) {
+      setPasswordError('Please enter correct password');
+    } else {
+      setPasswordError('');
+    }
+  }, [password]);
+
   return (
     <div className="login-form">
       <h1>Sign in</h1>
@@ -50,6 +82,8 @@ export const FormLogin = () => {
           onChange={handleChange}
           value={email}
         />
+        {emailError ? <p className="error">{emailError}</p> : null}
+
         <div className="password">
           <FormInput
             type="password"
@@ -65,6 +99,7 @@ export const FormLogin = () => {
             onClick={() => showHidePassword('password')}
           />
         </div>
+        {passwordError ? <p className="error">{passwordError}</p> : null}
         <div className="login-form-rememberme">
           <div>
             <FormInput
@@ -76,12 +111,14 @@ export const FormLogin = () => {
           </div>
           <a href="">Forgot password?</a>
         </div>
+        <FormButton type="submit" text="Login" />
 
-        <button type="submit">Login</button>
-        <NavLink to="/signup">
-          <button type="submit" className="change_page_button">
-            Sign Up
-          </button>
+        <NavLink to="/signup-formik">
+          <FormButton
+            type="button"
+            className="change_page_button"
+            text="Sign Up"
+          />
         </NavLink>
       </form>
     </div>
