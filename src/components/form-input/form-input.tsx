@@ -1,3 +1,5 @@
+import { useTheme } from '../../themeContext';
+
 interface InputProps {
   type: string;
   id: string;
@@ -13,8 +15,10 @@ export const FormInput = ({
   onChange,
   value,
 }: InputProps) => {
+  const { theme } = useTheme();
   return (
     <input
+      style={{ backgroundColor: theme.inputBackground, color: theme.inputText }}
       type={type}
       id={id}
       placeholder={placeholder}
