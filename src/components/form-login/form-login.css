@@ -68,9 +68,7 @@
 }
 
 .login-form form button {
-  background-color: #20df7f;
   font-size: 16px;
-  /* color: #224957; */
   width: 300px;
   height: 45px;
   border-radius: 10px;
@@ -80,19 +78,9 @@
   transition: 0.2s linear all;
 }
 
-.login-form form .change_page_button {
-  color: #20df7f;
-  background-color: #224957;
-}
-
 .login-form form .change_theme_button,
 .login-form form .change_page_button {
   margin-top: 10px;
-}
-
-.login-form form button:hover {
-  background-color: #093545 !important;
-  color: #fff !important;
 }
 
 .login-form-rememberme {

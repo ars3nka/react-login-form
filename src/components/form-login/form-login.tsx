@@ -9,6 +9,7 @@ import { useTheme } from '../../themeContext';
 
 import './form-login.css';
 import { FormStyled } from './form-login.styled';
+import { InputError } from '../input-error/input-error';
 
 // eslint-disable-next-line no-useless-escape
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -88,8 +89,7 @@ export const FormLogin = () => {
             onChange={handleChange}
             value={email}
           />
-          {emailError ? <p className="error">{emailError}</p> : null}
-
+          <InputError error={emailError} />
           <div className="password">
             <FormInput
               type="password"
@@ -105,7 +105,7 @@ export const FormLogin = () => {
               onClick={() => showHidePassword('password')}
             />
           </div>
-          {passwordError ? <p className="error">{passwordError}</p> : null}
+          <InputError error={passwordError} />
           <div className="login-form-rememberme">
             <div>
               <FormInput

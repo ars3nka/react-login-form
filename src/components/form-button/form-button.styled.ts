@@ -7,4 +7,8 @@ export const ButtonStyled = styled.button<{
 }>`
   background-color: ${({ theme }) => theme.buttonBackground};
   color: ${({ theme }) => theme.buttonText};
+  &:hover {
+    color: #fff;
+    background-color: #093545;
+  }
 `;

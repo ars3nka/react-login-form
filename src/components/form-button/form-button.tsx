@@ -9,18 +9,16 @@ interface ButtonProps {
 }
 
 export const FormButton = ({ type, text, className, onClick }: ButtonProps) => {
-  const { theme } = useTheme();
+  const { theme, themeType } = useTheme();
   return (
-    <button
+    <ButtonStyled
       type={type}
       className={className}
       onClick={onClick}
-      style={{
-        backgroundColor: theme.buttonBackground,
-        color: theme.buttonText,
-      }}
+      theme={theme}
+      themeType={themeType}
     >
       {text}
-    </button>
+    </ButtonStyled>
   );
 };
