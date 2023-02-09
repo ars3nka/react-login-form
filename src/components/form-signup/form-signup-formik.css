@@ -37,3 +37,12 @@
 #acceptTerms:checked ~ label::before {
   background-color: #20df7f;
 }
+
+.signup-button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signup-button-group .btn {
+  width: 49%;
+}

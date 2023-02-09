@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 80px);
   font-family: 'Lexend Deca';
   background-image: url('img/Vectors.svg');
   background-repeat: no-repeat;
@@ -68,14 +68,9 @@
 }
 
 .login-form form button {
-  font-size: 16px;
   width: 300px;
   height: 45px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-  font-weight: 400;
-  font-family: 'Lexend Deca';
-  transition: 0.2s linear all;
+  font-size: 16px;
 }
 
 .login-form form .change_theme_button,
