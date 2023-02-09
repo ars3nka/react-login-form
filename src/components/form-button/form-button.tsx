@@ -1,3 +1,6 @@
+import { useTheme } from '../../themeContext';
+import { ButtonStyled } from './form-button.styled';
+
 interface ButtonProps {
   type: 'button' | 'submit' | 'reset';
   text: string;
@@ -6,9 +9,16 @@ interface ButtonProps {
 }
 
 export const FormButton = ({ type, text, className, onClick }: ButtonProps) => {
+  const { theme, themeType } = useTheme();
   return (
-    <button type={type} className={className} onClick={onClick}>
+    <ButtonStyled
+      type={type}
+      className={className}
+      onClick={onClick}
+      theme={theme}
+      themeType={themeType}
+    >
       {text}
-    </button>
+    </ButtonStyled>
   );
 };

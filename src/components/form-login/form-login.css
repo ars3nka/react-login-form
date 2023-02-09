@@ -1,5 +1,4 @@
 .login-form {
-  background-color: #e5e5e5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +9,7 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: bottom center;
+  transition: all 0.3s ease-in-out;
 }
 
 .login-form form {
@@ -19,13 +19,11 @@
 
 .login-form h1 {
   font-size: 64px;
-  color: #224957;
   margin-bottom: 39px;
 }
 
 .login-form p {
   font-size: 16px;
-  color: #224957;
   margin-bottom: 36px;
 }
 
@@ -38,8 +36,6 @@
 .login-form form input[type='password'],
 .login-form form input[type='text'],
 .login-form form input[type='email'] {
-  background-color: #224957;
-  color: #ffffff;
   width: 300px;
   height: 45px;
   padding: 20px;
@@ -72,9 +68,7 @@
 }
 
 .login-form form button {
-  background-color: #20df7f;
   font-size: 16px;
-  color: #224957;
   width: 300px;
   height: 45px;
   border-radius: 10px;
@@ -84,15 +78,9 @@
   transition: 0.2s linear all;
 }
 
+.login-form form .change_theme_button,
 .login-form form .change_page_button {
-  color: #20df7f;
-  background-color: #224957;
   margin-top: 10px;
-}
-
-.login-form form button:hover {
-  background-color: #093545;
-  color: #fff;
 }
 
 .login-form-rememberme {
@@ -105,7 +93,6 @@
 }
 
 .login-form-rememberme label {
-  color: #093545;
   display: flex;
 }
 

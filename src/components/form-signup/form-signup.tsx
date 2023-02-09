@@ -6,7 +6,6 @@ import { FormButton } from '../form-button/form-button';
 import { FormInput } from '../form-input/form-input';
 
 import '../form-login/form-login.css';
-import './form-signup.css';
 
 export const FormSignUp = () => {
   const handleConfirm = () => {

@@ -5,13 +5,19 @@ import { NavLink } from 'react-router-dom';
 import { FormButton } from '../form-button/form-button';
 import { FormInput } from '../form-input/form-input';
 
+import { useTheme } from '../../themeContext';
+
 import './form-login.css';
+import { FormStyled } from './form-login.styled';
+import { InputError } from '../input-error/input-error';
 
 // eslint-disable-next-line no-useless-escape
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
 export const FormLogin = () => {
+  const { theme, toggleTheme, themeType } = useTheme();
+
   const handleConfirm = () => {
     const page = document.querySelector('.login-form');
     page
@@ -71,56 +77,63 @@ export const FormLogin = () => {
   }, [password]);
 
   return (
-    <div className="login-form">
-      <h1>Sign in</h1>
-      <p>Sign in and start managing your candidates!</p>
-      <form onSubmit={handleConfirm}>
-        <FormInput
-          type="email"
-          id="email"
-          placeholder="Enter Email"
-          onChange={handleChange}
-          value={email}
-        />
-        {emailError ? <p className="error">{emailError}</p> : null}
-
-        <div className="password">
+    <FormStyled themeType={themeType} theme={theme}>
+      <div className="login-form">
+        <h1>Sign in</h1>
+        <p>Sign in and start managing your candidates!</p>
+        <form onSubmit={handleConfirm}>
           <FormInput
-            type="password"
-            id="password"
-            placeholder="Enter Password"
+            type="email"
+            id="email"
+            placeholder="Enter Email"
             onChange={handleChange}
-            value={password}
+            value={email}
           />
-          <FontAwesomeIcon
-            icon={faEye}
-            size="lg"
-            id="password-control"
-            onClick={() => showHidePassword('password')}
-          />
-        </div>
-        {passwordError ? <p className="error">{passwordError}</p> : null}
-        <div className="login-form-rememberme">
-          <div>
+          <InputError error={emailError} />
+          <div className="password">
             <FormInput
-              type="checkbox"
-              id="rememberme"
-              onChange={() => setIsRememberme(!isRememberme)}
+              type="password"
+              id="password"
+              placeholder="Enter Password"
+              onChange={handleChange}
+              value={password}
             />
-            <label htmlFor="rememberme">Remember me</label>
+            <FontAwesomeIcon
+              icon={faEye}
+              size="lg"
+              id="password-control"
+              onClick={() => showHidePassword('password')}
+            />
           </div>
-          <a href="">Forgot password?</a>
-        </div>
-        <FormButton type="submit" text="Login" />
+          <InputError error={passwordError} />
+          <div className="login-form-rememberme">
+            <div>
+              <FormInput
+                type="checkbox"
+                id="rememberme"
+                onChange={() => setIsRememberme(!isRememberme)}
+              />
+              <label htmlFor="rememberme">Remember me</label>
+            </div>
+            <a href="">Forgot password?</a>
+          </div>
+          <FormButton type="submit" text="Login" />
 
-        <NavLink to="/signup-formik">
+          <NavLink to="/signup-formik">
+            <FormButton
+              type="button"
+              className="change_page_button"
+              text="New? Sign up now!"
+            />
+          </NavLink>
           <FormButton
             type="button"
-            className="change_page_button"
-            text="Sign Up"
+            text="Change Theme"
+            onClick={toggleTheme}
+            className="change_theme_button"
           />
-        </NavLink>
-      </form>
-    </div>
+        </form>
+      </div>
+    </FormStyled>
   );
 };

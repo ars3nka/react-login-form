@@ -1,3 +1,6 @@
+import { useTheme } from '../../themeContext';
+import { InputStyled } from './form-input.styled';
+
 interface InputProps {
   type: string;
   id: string;
@@ -13,8 +16,11 @@ export const FormInput = ({
   onChange,
   value,
 }: InputProps) => {
+  const { theme, themeType } = useTheme();
   return (
-    <input
+    <InputStyled
+      theme={theme}
+      themeType={themeType}
       type={type}
       id={id}
       placeholder={placeholder}
