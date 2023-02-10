@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-
-import { CircularProgress } from '@mui/material';
+import { useAppSelector } from '../../redux/store';
 import { PostItem } from './post-item/post-item';
 
 import './posts-page.css';
@@ -13,26 +11,14 @@ export interface PostType {
 }
 
 export const PostsPage = () => {
-  const [posts, setPosts] = useState<Array<PostType>>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const posts = useAppSelector((state) => state.posts.posts);
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetch(`https://jsonplaceholder.typicode.com/posts`)
-      .then((response) => response.json())
-      .then((json) => setPosts(json))
-      .catch((error) => setError(error.message))
-      .finally(() => setIsLoading(false));
-  }, []);
   return (
     <div className="posts-page">
       <h1>Posts</h1>
-
-      {isLoading && <CircularProgress />}
       {posts.length > 0 && (
         <div>
-          {posts.map((post) => (
+          {posts.map((post: PostType) => (
             <PostItem key={post.id} info={post} />
           ))}
         </div>

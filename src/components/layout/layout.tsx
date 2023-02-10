@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { addPosts } from '../../redux/reducers/postsReducer';
 import { ThemeContext, useTheme } from '../../themeContext';
-import { Theme, Themes, ThemeType } from '../../themeContext/themes';
+import { Themes, ThemeType } from '../../themeContext/themes';
 import { Header } from './header/header';
 
 import './layout.css';
 
 export const Layout = () => {
   const [theme, setTheme] = useState<ThemeType>('light');
+  const [error, setError] = useState('');
 
   const toggleTheme = () => {
     switch (theme) {
@@ -20,6 +23,17 @@ export const Layout = () => {
     }
     console.log('toggleTheme', theme);
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts`)
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch(addPosts(json));
+      })
+      .catch((error) => setError(error.message));
+  }, []);
 
   return (
     <ThemeContext.Provider

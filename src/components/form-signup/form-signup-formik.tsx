@@ -18,7 +18,7 @@ interface FormDate {
 }
 
 export const FormSignUpFormik = () => {
-  const { theme, toggleTheme, themeType } = useTheme();
+  const { theme, themeType } = useTheme();
   const handleSubmit = (data: FormDate) => {
     const page = document.querySelector('.signup-form');
     console.log(JSON.stringify(data, null, 2));
@@ -202,12 +202,6 @@ export const FormSignUpFormik = () => {
                   text="Already registered? Login!"
                 />
               </NavLink>
-              {/* <FormButton
-                type="button"
-                text="Change Theme"
-                onClick={toggleTheme}
-                className="change_theme_button"
-              /> */}
             </Form>
           )}
         </Formik>

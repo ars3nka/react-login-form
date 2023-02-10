@@ -4,7 +4,7 @@ import { FormButton } from '../../form-button/form-button';
 import './header.css';
 
 export const Header = () => {
-  const { theme, toggleTheme, themeType } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   return (
     <header
       style={{

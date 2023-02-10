@@ -1,0 +1,22 @@
+.post-page {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-page .edit-button,
+.post-page input {
+  padding: 10px 30px;
+}
+
+.post-page input {
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+.post-page form {
+  display: flex;
+  flex-direction: column;
+}

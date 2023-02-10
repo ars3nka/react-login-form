@@ -16,7 +16,7 @@ const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
 export const FormLogin = () => {
-  const { theme, toggleTheme, themeType } = useTheme();
+  const { theme, themeType } = useTheme();
 
   const handleConfirm = () => {
     const page = document.querySelector('.login-form');
@@ -126,12 +126,6 @@ export const FormLogin = () => {
               text="New? Sign up now!"
             />
           </NavLink>
-          {/* <FormButton
-            type="button"
-            text="Change Theme"
-            onClick={toggleTheme}
-            className="change_theme_button"
-          /> */}
         </form>
       </div>
     </FormStyled>
