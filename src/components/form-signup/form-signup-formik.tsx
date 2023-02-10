@@ -202,12 +202,6 @@ export const FormSignUpFormik = () => {
                   text="Already registered? Login!"
                 />
               </NavLink>
-              {/* <FormButton
-                type="button"
-                text="Change Theme"
-                onClick={toggleTheme}
-                className="change_theme_button"
-              /> */}
             </Form>
           )}
         </Formik>

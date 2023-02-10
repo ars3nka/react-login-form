@@ -17,14 +17,19 @@ export const PostsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  useEffect(() => {
+  const fetchPosts = () => {
     setIsLoading(true);
     fetch(`https://jsonplaceholder.typicode.com/posts`)
       .then((response) => response.json())
       .then((json) => setPosts(json))
       .catch((error) => setError(error.message))
       .finally(() => setIsLoading(false));
+  };
+
+  useEffect(() => {
+    fetchPosts();
   }, []);
+
   return (
     <div className="posts-page">
       <h1>Posts</h1>

@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { ThemeContext, useTheme } from '../../themeContext';
-import { Theme, Themes, ThemeType } from '../../themeContext/themes';
+import { ThemeContext } from '../../themeContext';
+import { Themes, ThemeType } from '../../themeContext/themes';
 import { Header } from './header/header';
-
-import './layout.css';
+import { WrapperStyled } from './layout.styled';
 
 export const Layout = () => {
   const [theme, setTheme] = useState<ThemeType>('light');
@@ -29,16 +28,10 @@ export const Layout = () => {
         toggleTheme,
       }}
     >
-      <div
-        className="wrapper"
-        style={{
-          backgroundColor: Themes[theme].background,
-          color: Themes[theme].text,
-        }}
-      >
+      <WrapperStyled theme={Themes[theme]} themeType={theme}>
         <Header />
         <Outlet />
-      </div>
+      </WrapperStyled>
     </ThemeContext.Provider>
   );
 };

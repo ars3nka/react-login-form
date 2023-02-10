@@ -126,12 +126,6 @@ export const FormLogin = () => {
               text="New? Sign up now!"
             />
           </NavLink>
-          {/* <FormButton
-            type="button"
-            text="Change Theme"
-            onClick={toggleTheme}
-            className="change_theme_button"
-          /> */}
         </form>
       </div>
     </FormStyled>
