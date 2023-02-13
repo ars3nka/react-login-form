@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { addPosts } from '../../redux/reducers/postsReducer';
-import { ThemeContext, useTheme } from '../../themeContext';
+import { ThemeContext } from '../../themeContext';
 import { Themes, ThemeType } from '../../themeContext/themes';
 import { Header } from './header/header';
-
-import './layout.css';
+import { WrapperStyled } from './layout.styled';
 
 export const Layout = () => {
   const [theme, setTheme] = useState<ThemeType>('light');
@@ -43,16 +42,10 @@ export const Layout = () => {
         toggleTheme,
       }}
     >
-      <div
-        className="wrapper"
-        style={{
-          backgroundColor: Themes[theme].background,
-          color: Themes[theme].text,
-        }}
-      >
+      <WrapperStyled theme={Themes[theme]} themeType={theme}>
         <Header />
         <Outlet />
-      </div>
+      </WrapperStyled>
     </ThemeContext.Provider>
   );
 };
