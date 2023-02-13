@@ -1,0 +1,15 @@
+.header {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.header .change_theme_button {
+  padding: 7px 13px;
+}
+
+.active-link-class {
+  color: #20df7f !important;
+}

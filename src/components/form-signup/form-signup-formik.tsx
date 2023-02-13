@@ -181,31 +181,27 @@ export const FormSignUpFormik = () => {
                   className="invalid-feedback"
                 />
               </div>
+              <div className="signup-button-group">
+                <FormButton
+                  type="submit"
+                  className="btn btn-primary"
+                  text="Register"
+                />
+                <FormButton
+                  type="button"
+                  className="btn btn-warning"
+                  text="Reset"
+                  onClick={resetForm}
+                />
+              </div>
 
-              <FormButton
-                type="submit"
-                className="btn btn-primary"
-                text="Register"
-              />
-              <FormButton
-                type="button"
-                className="btn btn-warning"
-                text="Reset"
-                onClick={resetForm}
-              />
-              <NavLink to="/">
+              <NavLink to="/login">
                 <FormButton
                   type="button"
                   className="change_page_button"
                   text="Already registered? Login!"
                 />
               </NavLink>
-              <FormButton
-                type="button"
-                text="Change Theme"
-                onClick={toggleTheme}
-                className="change_theme_button"
-              />
             </Form>
           )}
         </Formik>

@@ -119,19 +119,13 @@ export const FormLogin = () => {
           </div>
           <FormButton type="submit" text="Login" />
 
-          <NavLink to="/signup-formik">
+          <NavLink to="/signup">
             <FormButton
               type="button"
               className="change_page_button"
               text="New? Sign up now!"
             />
           </NavLink>
-          <FormButton
-            type="button"
-            text="Change Theme"
-            onClick={toggleTheme}
-            className="change_theme_button"
-          />
         </form>
       </div>
     </FormStyled>

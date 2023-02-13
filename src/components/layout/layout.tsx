@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { ThemeContext } from '../../themeContext';
-import { Theme, Themes, ThemeType } from '../../themeContext/themes';
+import { Themes, ThemeType } from '../../themeContext/themes';
+import { Header } from './header/header';
+import { WrapperStyled } from './layout.styled';
 
 export const Layout = () => {
   const [theme, setTheme] = useState<ThemeType>('light');
@@ -17,6 +19,7 @@ export const Layout = () => {
     }
     console.log('toggleTheme', theme);
   };
+
   return (
     <ThemeContext.Provider
       value={{
@@ -25,7 +28,10 @@ export const Layout = () => {
         toggleTheme,
       }}
     >
-      <Outlet />
+      <WrapperStyled theme={Themes[theme]} themeType={theme}>
+        <Header />
+        <Outlet />
+      </WrapperStyled>
     </ThemeContext.Provider>
   );
 };
