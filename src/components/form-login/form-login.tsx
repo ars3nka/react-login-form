@@ -24,10 +24,13 @@ export const FormLogin = () => {
   const navigate = useNavigate();
 
   const handleConfirm = () => {
-    const page = document.querySelector('.login-form');
-    page
-      ? (page.innerHTML = `<p>Email: ${email}</p><p>Password: ${password}</p><p>Rememberme: ${isRememberme}</p>`)
-      : null;
+    const loginInfo = {
+      email: email,
+      password: password,
+      rememberme: isRememberme,
+    };
+
+    console.log(loginInfo);
     authInfo.logIn(email, () => navigate('/posts'));
   };
 
@@ -41,7 +44,6 @@ export const FormLogin = () => {
   const [isShowPassword, setShowPassword] = useState<boolean>(true);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log(event.target.id);
     switch (event.target.id) {
       case 'email':
         setEmail(event.target.value);
