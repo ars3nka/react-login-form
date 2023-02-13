@@ -12,25 +12,48 @@ import { PostPage } from './pages/posts-page/post-page/post-page';
 import { PostEditPage } from './pages/posts-page/post-edit-page/post-edit-page';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { AuthProvider, useAuth } from './authContext/authProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(
-  <Provider store={store}>
-    <HashRouter>
+
+const CheckAuth = () => {
+  const authInfo = useAuth();
+
+  if (!authInfo.user) {
+    return (
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<Navigate to={'/login'} />} />
+          <Route path="*" element={<Navigate to={'/login'} />} />
           <Route path="/login" element={<FormLogin />} />
           <Route path="/signup" element={<FormSignUpFormik />} />
-          <Route path="/posts" element={<PostsPage />} />
-          <Route path="/posts/:id" element={<PostPage />} />
-          <Route path="/posts/:id/edit" element={<PostEditPage />} />
-          <Route path="*" element={<Navigate to={'/404'} />} />
-          <Route path="/404" element={<Page404 />} />
         </Route>
       </Routes>
-    </HashRouter>
-  </Provider>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/posts" element={<PostsPage />} />
+        <Route path="/posts/:id" element={<PostPage />} />
+        <Route path="/posts/:id/edit" element={<PostEditPage />} />
+        <Route path="*" element={<Navigate to={'/404'} />} />
+        <Route path="/404" element={<Page404 />} />
+      </Route>
+    </Routes>
+  );
+};
+
+root.render(
+  <AuthProvider>
+    <Provider store={store}>
+      <HashRouter>
+        <CheckAuth />
+      </HashRouter>
+    </Provider>
+  </AuthProvider>
 );

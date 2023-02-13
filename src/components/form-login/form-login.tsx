@@ -1,7 +1,7 @@
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FormButton } from '../form-button/form-button';
 import { FormInput } from '../form-input/form-input';
 
@@ -10,6 +10,7 @@ import { useTheme } from '../../themeContext';
 import './form-login.css';
 import { FormStyled } from './form-login.styled';
 import { InputError } from '../input-error/input-error';
+import { useAuth } from '../../authContext/authProvider';
 
 // eslint-disable-next-line no-useless-escape
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -18,11 +19,16 @@ const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 export const FormLogin = () => {
   const { theme, themeType } = useTheme();
 
+  const authInfo = useAuth();
+
+  const navigate = useNavigate();
+
   const handleConfirm = () => {
     const page = document.querySelector('.login-form');
     page
       ? (page.innerHTML = `<p>Email: ${email}</p><p>Password: ${password}</p><p>Rememberme: ${isRememberme}</p>`)
       : null;
+    authInfo.logIn(email, () => navigate('/posts'));
   };
 
   const [email, setEmail] = useState<string>('');

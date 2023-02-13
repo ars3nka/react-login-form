@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { useAuth } from '../../authContext/authProvider';
 import { addPosts } from '../../redux/reducers/postsReducer';
 import { ThemeContext } from '../../themeContext';
 import { Themes, ThemeType } from '../../themeContext/themes';
@@ -10,6 +11,9 @@ import { WrapperStyled } from './layout.styled';
 export const Layout = () => {
   const [theme, setTheme] = useState<ThemeType>('light');
   const [error, setError] = useState('');
+
+  const authData = useAuth();
+  console.log('AUTH CONTEXT', authData.user);
 
   const toggleTheme = () => {
     switch (theme) {

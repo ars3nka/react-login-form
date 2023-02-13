@@ -3,10 +3,11 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import '../form-login/form-login.css';
 import './form-signup-formik.css';
 import { validationSchema } from '../form-validation-schema/form-validation-schema';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FormButton } from '../form-button/form-button';
 import { useTheme } from '../../themeContext';
 import { FormStyled } from '../form-login/form-login.styled';
+import { useAuth } from '../../authContext/authProvider';
 
 interface FormDate {
   name: string;
@@ -19,17 +20,11 @@ interface FormDate {
 
 export const FormSignUpFormik = () => {
   const { theme, themeType } = useTheme();
+  const authInfo = useAuth();
+  const navigate = useNavigate();
   const handleSubmit = (data: FormDate) => {
-    const page = document.querySelector('.signup-form');
     console.log(JSON.stringify(data, null, 2));
-    page
-      ? (page.innerHTML = `<p>Name: ${data.name}</p>
-    <p>Last Name: ${data.lastName}</p>
-    <p>Email: ${data.email}</p>
-    <p>Password: ${data.password}</p>
-    <p>Confirm Password: ${data.confirmPassword}</p>
-    <p>Accept Terms: ${data.acceptTerms}</p>`)
-      : null;
+    authInfo.logIn(data.name, () => navigate('/posts'));
   };
 
   const initialValues = {
