@@ -6,3 +6,22 @@
   text-align: center;
   margin-bottom: 20px;
 }
+
+.posts-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.posts-sort {
+  height: 40px;
+  width: 120px;
+  margin-bottom: 20px;
+  background-color: #224957;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 20px;
+  font-family: 'Lexend Deca', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvet';
+}

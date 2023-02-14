@@ -5,19 +5,24 @@ import { CircularProgress } from '@mui/material';
 import { useAppSelector } from '../../../redux/store';
 
 import './post-page.css';
+import { PostType } from '../posts-page';
 
 export const PostPage = () => {
   const params = useParams();
-  const [isLoading, setIsLoading] = useState(false);
-  const [post, setPost] = useState({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [post, setPost] = useState<PostType>();
 
   const posts = useAppSelector((state) => state.posts.posts);
 
-  useEffect(() => {
+  const findPost = () => {
     setIsLoading(true);
-    const post = posts.filter((post) => post.id == params.id);
+    const post = posts.filter((post) => post.id === Number(params.id));
     setPost(post[0]);
     setIsLoading(false);
+  };
+
+  useEffect(() => {
+    findPost();
   }, []);
 
   if (isLoading) {
@@ -27,8 +32,8 @@ export const PostPage = () => {
   return (
     <div className="post-page">
       <h1>Post {params.id}</h1>
-      <h3>Title: {post.title}</h3>
-      <p>{post.body}</p>
+      <h3>Title: {post?.title}</h3>
+      <p>{post?.body}</p>
       <Link to={`/posts/${params.id}/edit`}>
         <FormButton type="button" text="Edit" className="edit-button" />
       </Link>

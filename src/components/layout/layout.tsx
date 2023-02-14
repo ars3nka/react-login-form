@@ -29,13 +29,17 @@ export const Layout = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const fetchPosts = () => {
     fetch(`https://jsonplaceholder.typicode.com/posts`)
       .then((response) => response.json())
       .then((json) => {
         dispatch(addPosts(json));
       })
       .catch((error) => setError(error.message));
+  };
+
+  useEffect(() => {
+    fetchPosts();
   }, []);
 
   return (
